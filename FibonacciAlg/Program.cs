@@ -33,7 +33,7 @@ namespace FibonacciAlg // Note: actual namespace depends on the project name.
             }
             else
             {
-                // Runs till the value is smaller then x.
+                // Keeps runnin as long the last number is smaller then x.
                 int x = 10946;
                 while (list[list.Count-1] < x)
                 {
