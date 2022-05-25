@@ -6,28 +6,28 @@ namespace FibonacciAlg // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
-            foreach(int x in GetFibonacciList())
+            int number = 30;
+            foreach(int x in GetFibonacciList(number,true))
             {
                 Console.WriteLine(x);
             }
 
-            Console.WriteLine(FibonacciRecursive(2).ToString());
+            Console.WriteLine("Recursive Fibonnaci " + number + " = " + FibonacciRecursive(number).ToString());
         }
 
-        static List<int> GetFibonacciList()
+        static List<int> GetFibonacciList(int max, bool rows)
         {
             List<int> list = new List<int>();
             int a = 0;
             int b = 1;
-            bool forRun = false;
 
             // Add 0.
             list.Add(a);
 
-            if (forRun)
+            if (rows)
             {
                 // Runs x amount of times.
-                int runCounts = 10;
+                int runCounts = max;
                 for (int i = 0; i < runCounts - 1; i++)      // -1 run because 0 is already added.
                 {
                     list.Add(CalcNext(ref a, ref b));
@@ -36,10 +36,16 @@ namespace FibonacciAlg // Note: actual namespace depends on the project name.
             else
             {
                 // Keeps runnin as long the last number is smaller then x.
-                int x = 10946;
+                int x = max;
                 while (list[list.Count-1] < x)
                 {
                     list.Add(CalcNext(ref a, ref b));
+                    if (list[list.Count-1] > x)
+                    {
+                        list.RemoveAt(list.Count - 1);
+                        return list;
+                    }
+                    
                 }
             }
 
