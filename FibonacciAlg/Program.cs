@@ -10,6 +10,8 @@ namespace FibonacciAlg // Note: actual namespace depends on the project name.
             {
                 Console.WriteLine(x);
             }
+
+            Console.WriteLine(FibonacciRecursive(2).ToString());
         }
 
         static List<int> GetFibonacciList()
@@ -50,6 +52,18 @@ namespace FibonacciAlg // Note: actual namespace depends on the project name.
             a = b;
             b = result;
             return result;
+        }
+
+        static int FibonacciRecursive(int number)
+        {
+            if (number < 2)
+            {
+                return number;
+            }
+            else
+            {
+                return FibonacciRecursive(number - 1) + FibonacciRecursive(number - 2);
+            }
         }
     }
 }
